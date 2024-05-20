@@ -1,0 +1,72 @@
+TESTING STRATEGY OF OUR CODE:
+
+Test-first programming is generally a good strategy to help write a good code. In our opinion, in this Game specifically, test first programming
+was an essential strategy to start off this code because this game is built on the basis of thinking about examples in order for you to find strategies
+that make the bot choose words that are better than random.
+
+So, we first tried different cases on pen and paper to start building/forming our strategies.
+
+for example we thought of this case which led us to a strategy:
+case  : [ae, ee , be] , in such a case if as a bot I started the first round, I can win it by simply choosing the word that has the last letter
+having a firstCount=0 (ie it is not found as a first letter in any of the words). In this way this test case led me to think about my winning move strategy.
+
+So, this code was based on Test-first programming.
+After putting our 2 strategies (winning move, blocking move) based on cases, we then put on mind the different methods that should be implemented to check the reuirements.
+For each method we specified the specifications and the used tests examples to think about their correctness as methods (ie when they take this input, are they returning what i require)
+(testing without having the detailed method and code is black box testing which doesn't test the correctness of the implementation of methods, rather
+the correctness of the logic)
+The implementation of the code happened in a way where keep on testing and implementing and testing again and etc..(iterative testing)
+
+when the code's basic methods were implemented and it was time to try the game for the first time, we identified the main test cases that need to be tried
+ie, we didn't just exhaustively run the code on differenct examples without thinking about the types/categories of these examples
+instead we tried to systematically form our test cases in a way they tend to encompass all categories of words that could be put.
+
+But because this game in its nature doesn't involve numbers, so we didn't have to think about integer boundaries or things like that, instead
+the subdomains where as follows:
+
+1) set of words having at least 1 word starting and ending with the same letter with countFirst=1  (eg: eye)
+2) set of words having at least 1 word that has last letter having countFirst =0;
+3) set of words having all words' last letter having the same firstCount
+4) all other words
+
+These above types of subdomains are like the boundaries in the integer problems. They are cases directly involved with losing the game ie they 
+are the subdomains that are part of losing the game if not accounted for.
+
+To check for the correctness of the logic of our overall code we tried the following:
+1)checking repetition:
+player2 repeats a spell that player1 already typed.
+expected output: player1 wins due to repetition.
+
+2)invalid spell 1:
+player2 enters an invalid spell not in the list but satisfies the letter matching requirement.
+expected output: player1 wins due to an invalid spell.
+
+3)invalid spell 2:
+player2 enters an invalid spell not in the list and doesn't satisfy the letter matching requirement.
+expected output: player1 wins due to an invalid spell.
+
+4)mismatched characters:
+player2 enters a spell with a mismatched first character.
+expected output: player1 wins due to mismatched characters.
+
+5) human beats bot's strategy:
+the player will figure out the bot's strategy and trace the steps in order to beat him.
+expected output: will depend on the bot's strength to avoid loss and extend the game more to to the winning move. So expectation has to do with the challenge of the project itself.
+
+After the implementation and testing of the algorithms logic, we retest our methods alone one by one to make sure they work
+and this is what we call unit testing, where we test the methods solely away from the whole code and check if they work.
+
+Coverage is also used, specifically branch coverage which was tested on the if statement of the getComputerSpell where it is the turn of the computer
+to enter input; this if statement is tested by changing the conditions of the words used in a way to see if it is branching correctly ie if the
+condition that there is no countFirst is equal to 0, is it branching correctly from the winning move to the blocking move? and if the blocking move is not statisfied
+(in the test case I use words that have countFirst equal to each other) is it branching to the random choice?
+In this way I will be checking the if branches usig coverage.
+
+During the process, everytime we encountered an errorand fixed it, we made sure to reuse the same test case after the fixation to make sure that
+this test case is not a "boundary" problem and if it is we will have to condsider it and work on our code accordingly and then test again.
+
+In this way we will have satisfied Systematic testing by partitioning the categories of examples in my test cases.
+Also, tested the logic of our code in a black box testing and then tested the correctness of my methods and branching using unit testing and coverage.
+And ofcourse , the whole process is summmarized by an iterative fix and test.
+
+

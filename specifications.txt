@@ -1,0 +1,82 @@
+
+1. isSpellAlreadyCast
+   - Method Signature:
+    
+     int isSpellAlreadyCast(char* spell, char** castSpells, int numCastSpells);
+    
+   - Requires Clause:
+     - "spell" must point to a valid null-terminated string.
+     - "castSpells" must be a valid array of strings.
+     - "numCastSpells" must be a non-negative integer.
+   - Effects Clause:
+     - Returns 1 if "spell" is found in "castSpells"; otherwise, returns 0.
+
+2. areAvailableWords
+   - Method Signature:
+    
+     int areAvailableWords(char** spellList, int numSpells, char* previousSpell, LetterCount* letterCounts);
+     
+   - Requires Clause:
+     - "spellList" must be a valid array of strings.
+     - "numSpells" must be a non-negative integer.
+     - "previousSpell" must point to a valid null-terminated string.
+     - "letterCounts" must be a valid array of "LetterCount" structures.
+   - Effects Clause:
+     - Returns 1 if there is at least one available word in `spellList` that can be used based on the last letter of "previousSpell" and the availability of spells in "letterCounts". Otherwise, returns 0.
+
+3. wordExists
+   - Method Signature:
+     
+     int wordExists(char** spellList, int numSpells, char* spell);
+    
+   - Requires Clause:
+     - "spellList" must be a valid array of strings.
+     - "numSpells" must be a non-negative integer.
+     - "spell" must point to a valid null-terminated string.
+   - Effects Clause:
+     - Returns 1 if "spell" is found in "spellList" and is not already cast; otherwise, returns 0.
+
+4. updateLetterCounts
+   - Method Signature:
+    
+     void updateLetterCounts(char* spell, LetterCount* letterCounts);
+    
+   - Requires Clause:
+     - "spell" must point to a valid null-terminated string.
+     - "letterCounts" must be a valid array of "LetterCount" structures.
+   - **Effects Clause:**
+     - Updates "letterCounts" based on the first and last letters of "spell".
+
+5. getPlayerSpell
+   - Method Signature:
+     
+     int getPlayerSpell(char* previousSpell, char** castSpells, int numCastSpells, char** spellList, int numSpells, char* playerSpell);
+     
+   - Requires Clause:
+     - "previousSpell" must point to a valid null-terminated string.
+     - "castSpells" must be a valid array of strings.
+     - "numCastSpells" must be a non-negative integer.
+     - "spellList" must be a valid array of strings.
+     - "numSpells" must be a non-negative integer.
+     - "playerSpell" must point to a valid null-terminated string.
+   - Effects Clause:
+     - Reads a spell from the player and stores it in "playerSpell".
+     - Returns 1 if the entered spell is valid; otherwise, returns 0.
+
+6. getComputerSpell
+   - Method Signature:
+     
+     int getComputerSpell(char* previousSpell, char** castSpells, int numCastSpells, char** spellList, int numSpells, char* computerSpell, LetterCount* letterCounts);
+     
+   - Requires Clause:
+     - "previousSpell" must point to a valid null-terminated string.
+     - "castSpells" must be a valid array of strings.
+     - "numCastSpells" must be a non-negative integer.
+     - "spellList" must be a valid array of strings.
+     - "numSpells" must be a non-negative integer.
+     - "computerSpell" must point to a valid null-terminated string.
+     - "letterCounts" must be a valid array of "LetterCount" structures.
+   - Effects Clause:
+     - Chooses a spell for the computer to cast based on a strategy.
+     - Updates "computerSpell" with the chosen spell.
+     - Returns 1 if a valid spell is chosen; otherwise, returns 0.
